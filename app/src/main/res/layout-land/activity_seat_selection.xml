@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="woowacourse.movie.presentation.seat.SeatSelectionViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -150,6 +153,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
+                    android:text="@{vm.movie.title}"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -159,6 +163,7 @@
                     android:id="@+id/reservation_amount_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{@string/seat_reservation_amount(vm.totalPrice)}"
                     android:textColor="@color/gray_400"
                     android:textSize="18sp"
                     tools:text="0원" />
