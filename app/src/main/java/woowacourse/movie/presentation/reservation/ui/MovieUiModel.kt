@@ -2,7 +2,9 @@ package woowacourse.movie.presentation.reservation.ui
 
 import androidx.annotation.DrawableRes
 import woowacourse.movie.domain.Movie
+import woowacourse.movie.domain.ScreeningDate
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 class MovieUiModel(
@@ -12,10 +14,18 @@ class MovieUiModel(
     val posterImage: Int,
     val startScreeningDate: String,
     val endScreeningDate: String,
-    val screeningDateRange: List<String>,
+    private val screeningDate: ScreeningDate,
     val runningTime: Int,
     val description: String,
 ) {
+    fun screeningDates(): List<String> {
+        return screeningDate.screeningDates().map { it.format("yyyy-MM-dd") }
+    }
+
+    fun screeningTimes(position: Int): List<String> {
+        return screeningDate.screeningTimes(position).map { it.format("HH:mm") }
+    }
+
     companion object {
         fun from(movie: Movie): MovieUiModel {
             return movie.run {
@@ -25,7 +35,7 @@ class MovieUiModel(
                     posterImage,
                     screeningDate.startDate.format("yyyy.M.d"),
                     screeningDate.endDate.format("yyyy.M.d"),
-                    screeningDate.screeningDateRange().map { it.format("yyyy-MM-dd") },
+                    screeningDate,
                     runningTime,
                     description,
                 )
@@ -33,5 +43,7 @@ class MovieUiModel(
         }
 
         private fun LocalDate.format(pattern: String) = format(DateTimeFormatter.ofPattern(pattern))
+
+        private fun LocalTime.format(pattern: String) = format(DateTimeFormatter.ofPattern(pattern))
     }
 }

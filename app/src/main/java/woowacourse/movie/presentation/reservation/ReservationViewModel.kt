@@ -26,6 +26,9 @@ class ReservationViewModel(
     private val _navigateEvent = MutableSingleLiveData<Unit>()
     val navigateEvent: SingleLiveData<Unit> get() = _navigateEvent
 
+    private val _screeningTimes = MutableLiveData<List<String>>()
+    val screeningTimes: LiveData<List<String>> get() = _screeningTimes
+
     fun loadMovie() {
         val movie =
             movieRepository.find(movieId) ?: run {
@@ -47,5 +50,10 @@ class ReservationViewModel(
 
     override fun navigateSeatSelection() {
         _navigateEvent.setValue(Unit)
+    }
+
+    fun selectScreeningDate(position: Int) {
+        val movie = _movie.value ?: return
+        _screeningTimes.value = movie.screeningTimes(position)
     }
 }
