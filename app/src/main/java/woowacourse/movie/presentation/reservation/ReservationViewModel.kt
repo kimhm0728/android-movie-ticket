@@ -20,17 +20,18 @@ class ReservationViewModel(
     private val _movieError = MutableSingleLiveData<Unit>()
     val movieError: SingleLiveData<Unit> get() = _movieError
 
-    private val _reservationCount = MutableLiveData<ReservationCount>()
+    private val _reservationCount = MutableLiveData<ReservationCount>(ReservationCount())
     val reservationCount: LiveData<ReservationCount> get() = _reservationCount
 
     private val _navigateEvent = MutableSingleLiveData<Unit>()
     val navigateEvent: SingleLiveData<Unit> get() = _navigateEvent
 
     fun loadMovie() {
-        val movie = movieRepository.find(movieId) ?: run {
-            _movieError.setValue(Unit)
-            return
-        }
+        val movie =
+            movieRepository.find(movieId) ?: run {
+                _movieError.setValue(Unit)
+                return
+            }
         _movie.value = MovieUiModel.from(movie)
     }
 

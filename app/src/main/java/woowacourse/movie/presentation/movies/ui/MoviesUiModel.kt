@@ -2,7 +2,6 @@ package woowacourse.movie.presentation.movies.ui
 
 import androidx.annotation.DrawableRes
 import woowacourse.movie.domain.Movie
-import woowacourse.movie.presentation.movies.ui.MoviesUiModel.MovieUiModel.Companion.toString
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -33,7 +32,7 @@ sealed interface MoviesUiModel {
                 }
             }
 
-            private fun LocalDate.format() = format(DateTimeFormatter.ofPattern("yyyy.M.d"));
+            private fun LocalDate.format() = format(DateTimeFormatter.ofPattern("yyyy.M.d"))
         }
     }
 
