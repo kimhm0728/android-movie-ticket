@@ -17,6 +17,7 @@ class MoviesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.lifecycleOwner = this
+        viewModel.loadMovies()
         initializeView()
     }
 

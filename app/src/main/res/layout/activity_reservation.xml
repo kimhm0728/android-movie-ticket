@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="movie"
+            type="woowacourse.movie.domain.Movie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,6 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
+                    android:src="@{movie.posterImage}"
                     app:layout_constraintBottom_toTopOf="@+id/text_layout"
                     app:layout_constraintDimensionRatio="360:340"
                     app:layout_constraintTop_toTopOf="parent"
@@ -48,6 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
+                        android:text="@{movie.title}"
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -58,6 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="34dp"
+                        android:text="@{@string/screening_date(movie.startScreeningDate, movie.endScreeningDate)}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="상영일: 2024.3.1" />
@@ -67,12 +73,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="19dp"
+                        android:text="@{@string/running_time(movie.runningTime)}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         tools:text="러닝타임: 152분" />
 
                     <TextView
                         android:id="@+id/synopsis_text"
+                        android:text="@{movie.description}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="30dp"
