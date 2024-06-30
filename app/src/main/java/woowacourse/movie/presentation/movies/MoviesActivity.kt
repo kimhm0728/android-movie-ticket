@@ -22,10 +22,11 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun initializeView() {
-        val adapter = MoviesAdapter(onClickReservationButton = {
-            val intent = ReservationActivity.newIntent(this, it)
-            startActivity(intent)
-        })
+        val adapter =
+            MoviesAdapter(onClickReservationButton = {
+                val intent = ReservationActivity.newIntent(this, it)
+                startActivity(intent)
+            })
 
         binding.movieList.adapter = adapter
         viewModel.movies.observe(this) {

@@ -15,12 +15,15 @@ class ReservationActivity : AppCompatActivity() {
     private val viewModel by viewModels<ReservationViewModel> {
         ReservationViewModelFactory(
             intent.getLongExtra(MOVIE_ID_KEY, MOVIE_ID_DEFAULT_VALUE),
-            LocalMovieRepository()
+            LocalMovieRepository(),
         )
     }
     private val binding by lazy { ActivityReservationBinding.inflate(layoutInflater) }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(
+        savedInstanceState: Bundle?,
+        persistentState: PersistableBundle?,
+    ) {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(binding.root)
 
@@ -39,7 +42,10 @@ class ReservationActivity : AppCompatActivity() {
         private const val MOVIE_ID_KEY = "movieId"
         private const val MOVIE_ID_DEFAULT_VALUE = -1L
 
-        fun newIntent(context: Context, movieId: Long): Intent {
+        fun newIntent(
+            context: Context,
+            movieId: Long,
+        ): Intent {
             return Intent(context, ReservationActivity::class.java)
                 .putExtra(MOVIE_ID_KEY, movieId)
         }

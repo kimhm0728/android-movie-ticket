@@ -23,8 +23,7 @@ class MoviesViewModel(
         return movieUiModels
             .windowed(ADVERTISEMENT_INTERVAL, step = ADVERTISEMENT_INTERVAL, partialWindows = true)
             .flatMap {
-                if (it.size == ADVERTISEMENT_INTERVAL) it + advertisementUiModel
-                else it
+                if (it.size == ADVERTISEMENT_INTERVAL) it + advertisementUiModel else it
             }
     }
 

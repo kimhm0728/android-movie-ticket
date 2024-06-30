@@ -12,7 +12,7 @@ import woowacourse.movie.presentation.reservation.ui.ReservationListener
 
 class ReservationViewModel(
     private val movieId: Long,
-    private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository,
 ) : ViewModel(), ReservationListener {
     private val _movie = MutableLiveData<Movie>()
     val movie: LiveData<Movie> = _movie

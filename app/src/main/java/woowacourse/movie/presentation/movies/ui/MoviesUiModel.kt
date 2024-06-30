@@ -18,7 +18,7 @@ sealed interface MoviesUiModel {
         override val moviesViewType: MoviesViewType = MoviesViewType.MOVIE,
     ) : MoviesUiModel {
         companion object {
-            fun from(movie:Movie): MoviesUiModel {
+            fun from(movie: Movie): MoviesUiModel {
                 return movie.run { MovieUiModel(id, title, posterImage, startScreeningDate, endScreeningDate, runningTime) }
             }
         }

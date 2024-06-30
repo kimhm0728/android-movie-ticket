@@ -13,9 +13,12 @@ class MoviesAdapter(
 ) : Adapter<MoviesViewHolder>() {
     private var movies: List<MoviesUiModel> = emptyList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): MoviesViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return when(MoviesViewType.from(viewType)) {
+        return when (MoviesViewType.from(viewType)) {
             MoviesViewType.MOVIE -> {
                 val binding = ItemMovieBinding.inflate(inflater, parent, false)
                 MoviesViewHolder.MovieViewHolder(binding, onClickReservationButton)
@@ -27,8 +30,11 @@ class MoviesAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        when(holder) {
+    override fun onBindViewHolder(
+        holder: MoviesViewHolder,
+        position: Int,
+    ) {
+        when (holder) {
             is MoviesViewHolder.MovieViewHolder -> holder.bind(movies[position] as MoviesUiModel.MovieUiModel)
             is MoviesViewHolder.AdvertisementViewHolder -> holder.bind(movies[position] as MoviesUiModel.AdvertisementUiModel)
         }
