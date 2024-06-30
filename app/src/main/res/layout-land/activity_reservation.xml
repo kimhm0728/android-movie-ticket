@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="movie"
-            type="woowacourse.movie.domain.Movie" />
+            name="vm"
+            type="woowacourse.movie.presentation.reservation.ReservationViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@{movie.posterImage}"
+            android:src="@{vm.movie.posterImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -58,7 +58,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="27dp"
-                        android:text="@{movie.title}"
+                        android:text="@{vm.movie.title}"
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -71,7 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="34dp"
-                        android:text="@{@string/screening_date(movie.startScreeningDate, movie.endScreeningDate)}"
+                        android:text="@{@string/screening_date(vm.movie.startScreeningDate, vm.movie.endScreeningDate)}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/running_time_text"
@@ -83,7 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="19dp"
-                        android:text="@{@string/running_time(movie.runningTime)}"
+                        android:text="@{@string/running_time(vm.movie.runningTime)}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toTopOf="@+id/synopsis_text"
@@ -95,7 +95,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="30dp"
-                        android:text="@{movie.description}"
+                        android:text="@{vm.movie.description}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -158,6 +158,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="3dp"
                         android:text="@string/minus"
+                        android:onClick="@{() -> vm.onDecreaseReservationCount()}"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -169,6 +170,7 @@
                         android:gravity="center"
                         android:textColor="@color/black"
                         android:textSize="20sp"
+                        android:text="@{vm.reservationCount.toString()}"
                         android:textStyle="bold" />
 
                     <Button
@@ -177,6 +179,7 @@
                         android:layout_height="wrap_content"
                         android:paddingHorizontal="3dp"
                         android:text="@string/plus"
+                        android:onClick="@{() -> vm.onIncreaseReservationCount()}"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -188,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:paddingVertical="3dp"
                     android:text="@string/seat_select"
+                    android:onClick="@{() -> vm.navigateSeatSelection()}"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 

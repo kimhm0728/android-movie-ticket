@@ -30,9 +30,6 @@ class ReservationActivity : AppCompatActivity() {
     }
 
     private fun initializeView() {
-        viewModel.movie.observe(this) {
-            binding.movie = it
-        }
         viewModel.movieError.observe(this) {
             Toast.makeText(this, R.string.invalid_movie, Toast.LENGTH_SHORT).show()
         }
