@@ -2,7 +2,7 @@ package woowacourse.movie.presentation.reservation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import woowacourse.movie.data.MovieRepository
+import woowacourse.movie.domain.MovieRepository
 import java.lang.IllegalArgumentException
 
 class ReservationViewModelFactory(

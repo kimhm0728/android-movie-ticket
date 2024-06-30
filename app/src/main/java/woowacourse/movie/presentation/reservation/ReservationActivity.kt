@@ -36,6 +36,10 @@ class ReservationActivity : AppCompatActivity() {
         viewModel.movieError.observe(this) {
             Toast.makeText(this, R.string.invalid_movie, Toast.LENGTH_SHORT).show()
         }
+
+        viewModel.navigateEvent.observe(this) {
+            TODO()
+        }
     }
 
     companion object {

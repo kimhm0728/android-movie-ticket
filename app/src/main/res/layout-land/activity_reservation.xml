@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="woowacourse.movie.presentation.reservation.ReservationViewModel"/>
+            type="woowacourse.movie.presentation.reservation.ReservationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -156,9 +156,9 @@
                         android:id="@+id/minus_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="@{() -> vm.onDecreaseReservationCount()}"
                         android:paddingHorizontal="3dp"
                         android:text="@string/minus"
-                        android:onClick="@{() -> vm.onDecreaseReservationCount()}"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -168,18 +168,18 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:text="@{String.valueOf(vm.reservationCount.count)}"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:text="@{vm.reservationCount.toString()}"
                         android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/plus_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="@{() -> vm.onIncreaseReservationCount()}"
                         android:paddingHorizontal="3dp"
                         android:text="@string/plus"
-                        android:onClick="@{() -> vm.onIncreaseReservationCount()}"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -189,9 +189,9 @@
                     android:id="@+id/seat_select_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.navigateSeatSelection()}"
                     android:paddingVertical="3dp"
                     android:text="@string/seat_select"
-                    android:onClick="@{() -> vm.navigateSeatSelection()}"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 

@@ -114,6 +114,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
+                    android:entries="@{}"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/screening_time_spinner"
                     app:layout_constraintTop_toTopOf="parent"
@@ -154,7 +155,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@{vm.reservationCount.toString()}"
+                    android:text="@{String.valueOf(vm.reservationCount.count)}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />

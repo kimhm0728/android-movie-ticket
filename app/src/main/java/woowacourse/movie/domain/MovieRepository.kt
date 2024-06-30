@@ -1,6 +1,4 @@
-package woowacourse.movie.data
-
-import woowacourse.movie.domain.Movie
+package woowacourse.movie.domain
 
 interface MovieRepository {
     fun findAll(): List<Movie>

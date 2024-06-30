@@ -5,17 +5,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import woowacourse.movie.common.MutableSingleLiveData
 import woowacourse.movie.common.SingleLiveData
-import woowacourse.movie.data.MovieRepository
-import woowacourse.movie.domain.Movie
+import woowacourse.movie.domain.MovieRepository
 import woowacourse.movie.domain.ReservationCount
+import woowacourse.movie.presentation.reservation.ui.MovieUiModel
 import woowacourse.movie.presentation.reservation.ui.ReservationListener
 
 class ReservationViewModel(
     private val movieId: Long,
     private val movieRepository: MovieRepository,
 ) : ViewModel(), ReservationListener {
-    private val _movie = MutableLiveData<Movie>()
-    val movie: LiveData<Movie> = _movie
+    private val _movie = MutableLiveData<MovieUiModel>()
+    val movie: LiveData<MovieUiModel> = _movie
 
     private val _movieError = MutableSingleLiveData<Unit>()
     val movieError: SingleLiveData<Unit> get() = _movieError
@@ -27,12 +27,11 @@ class ReservationViewModel(
     val navigateEvent: SingleLiveData<Unit> get() = _navigateEvent
 
     fun loadMovie() {
-        val movie = movieRepository.find(movieId)
-        movie ?: run {
+        val movie = movieRepository.find(movieId) ?: run {
             _movieError.setValue(Unit)
             return
         }
-        _movie.value = movie
+        _movie.value = MovieUiModel.from(movie)
     }
 
     override fun onIncreaseReservationCount() {
