@@ -19,7 +19,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@{vm.movie.posterImage}"
+            app:imgRes="@{vm.movie.posterImage}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintLeft_toLeftOf="parent"
