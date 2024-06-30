@@ -24,6 +24,7 @@ class ReservationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.lifecycleOwner = this
+        binding.vm = viewModel
         viewModel.loadMovie()
         initializeView()
     }

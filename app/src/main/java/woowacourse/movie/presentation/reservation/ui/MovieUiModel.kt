@@ -12,6 +12,7 @@ class MovieUiModel(
     val posterImage: Int,
     val startScreeningDate: String,
     val endScreeningDate: String,
+    val screeningDateRange: List<String>,
     val runningTime: Int,
     val description: String,
 ) {
@@ -22,14 +23,15 @@ class MovieUiModel(
                     id,
                     title,
                     posterImage,
-                    screeningDate.startDate.format(),
-                    screeningDate.endDate.format(),
+                    screeningDate.startDate.format("yyyy.M.d"),
+                    screeningDate.endDate.format("yyyy.M.d"),
+                    screeningDate.screeningDateRange().map { it.format("yyyy-MM-dd") },
                     runningTime,
                     description,
                 )
             }
         }
 
-        private fun LocalDate.format() = format(DateTimeFormatter.ofPattern("yyyy.M.d"));
+        private fun LocalDate.format(pattern: String) = format(DateTimeFormatter.ofPattern(pattern))
     }
 }
