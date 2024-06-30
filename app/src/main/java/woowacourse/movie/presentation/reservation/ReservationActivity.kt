@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import woowacourse.movie.R
 import woowacourse.movie.data.LocalMovieRepository
 import woowacourse.movie.databinding.ActivityReservationBinding
+import woowacourse.movie.presentation.seat.SeatSelectionActivity
 
 class ReservationActivity : AppCompatActivity() {
     private val binding by lazy { ActivityReservationBinding.inflate(layoutInflater) }
@@ -35,7 +36,8 @@ class ReservationActivity : AppCompatActivity() {
         }
 
         viewModel.navigateEvent.observe(this) {
-            TODO()
+            val intent = SeatSelectionActivity.newIntent(this, it)
+            startActivity(intent)
         }
     }
 

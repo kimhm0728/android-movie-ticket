@@ -17,6 +17,8 @@
     <string name="reservation_question">정말 예매하시겠습니까?</string>
     <string name="cancel">취소</string>
     <string name="reservation_complete">예매 완료</string>
+
+    <string name="invalid_reservation_bundle">잘못된 접근입니다. 이전 화면으로 돌아가시겠습니까?</string>
     <string name="invalid_movie">유효하지 않은 영화입니다.</string>
     <string name="invalid_screening_date_time">유효하지 않은 상영 시간입니다.</string>
     <string name="invalid_reservation_count">유효하지 않은 예매 인원입니다.</string>

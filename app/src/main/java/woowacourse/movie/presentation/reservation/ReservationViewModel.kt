@@ -8,6 +8,7 @@ import woowacourse.movie.common.SingleLiveData
 import woowacourse.movie.domain.MovieRepository
 import woowacourse.movie.domain.ReservationCount
 import woowacourse.movie.presentation.reservation.ui.MovieUiModel
+import woowacourse.movie.presentation.reservation.ui.ReservationBundle
 import woowacourse.movie.presentation.reservation.ui.ReservationListener
 
 class ReservationViewModel(
@@ -23,18 +24,18 @@ class ReservationViewModel(
     private val _reservationCount = MutableLiveData<ReservationCount>(ReservationCount())
     val reservationCount: LiveData<ReservationCount> get() = _reservationCount
 
-    private val _navigateEvent = MutableSingleLiveData<Unit>()
-    val navigateEvent: SingleLiveData<Unit> get() = _navigateEvent
+    private val _navigateEvent = MutableSingleLiveData<ReservationBundle>()
+    val navigateEvent: SingleLiveData<ReservationBundle> get() = _navigateEvent
 
     private val _screeningTimes = MutableLiveData<List<String>>()
     val screeningTimes: LiveData<List<String>> get() = _screeningTimes
 
     fun loadMovie() {
-        val movie =
-            movieRepository.find(movieId) ?: run {
-                _movieError.setValue(Unit)
-                return
-            }
+        val movie = movieRepository.find(movieId)
+        if (movie == null) {
+            _movieError.setValue(Unit)
+            return
+        }
         _movie.value = MovieUiModel.from(movie)
     }
 
@@ -49,7 +50,7 @@ class ReservationViewModel(
     }
 
     override fun navigateSeatSelection() {
-        _navigateEvent.setValue(Unit)
+        _navigateEvent.setValue(ReservationBundle(movieId, _reservationCount.value ?: return))
     }
 
     fun selectScreeningDate(position: Int) {

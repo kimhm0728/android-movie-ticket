@@ -1,6 +1,10 @@
 package woowacourse.movie.domain
 
-class ReservationCount(val count: Int = INITIAL_COUNT) {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class ReservationCount(val count: Int = INITIAL_COUNT) : Parcelable {
     operator fun inc(): ReservationCount {
         return ReservationCount((count + 1).coerceAtMost(MAX_COUNT))
     }

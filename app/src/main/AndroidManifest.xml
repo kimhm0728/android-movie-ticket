@@ -25,6 +25,10 @@
             android:name=".presentation.reservation.ReservationActivity"
             android:exported="false">
         </activity>
+        <activity
+            android:name=".presentation.seat.SeatSelectionActivity"
+            android:exported="false">
+        </activity>
     </application>
 
 </manifest>
